@@ -46,19 +46,17 @@ return array(
 				'<controller:\w+>/<action:\w+>'=>'<controller>/<action>',
 			),
 		),
-		'db'=>array(
-			'connectionString' => 'sqlite:'.dirname(__FILE__).'/../data/testdrive.db',
-		),
+		// 'db'=>array(
+		// 	'connectionString' => 'sqlite:'.dirname(__FILE__).'/../data/testdrive.db',
+		// ),
 		// uncomment the following to use a MySQL database
-		/*
 		'db'=>array(
-			'connectionString' => 'mysql:host=localhost;dbname=testdrive',
+			'connectionString' => 'mysql:host=127.0.0.1:5342;dbname=trackstar_dev',
 			'emulatePrepare' => true,
 			'username' => 'root',
-			'password' => '',
+			'password' => '',//root
 			'charset' => 'utf8',
 		),
-		*/
 		'errorHandler'=>array(
 			// use 'site/error' action to display errors
 			'errorAction'=>'site/error',
