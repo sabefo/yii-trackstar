@@ -7,6 +7,17 @@ class IssueController extends Controller
 	 * using two-column layout. See 'protected/views/layouts/column2.php'.
 	 */
 	public $layout='//layouts/column2';
+	private $_project = null;
+
+	protected function loadProject($project_id) {
+		if ($this -> _project === null) {
+			$this -> _project = Project::model() -> findByPk($project_id);
+			if ($this -> _project === null) {
+				throw new CHttpException(404, 'The requested project does not exist');
+			}
+		}
+		return $this -> _project;
+	}
 
 	/**
 	 * @return array action filters
@@ -15,7 +26,8 @@ class IssueController extends Controller
 	{
 		return array(
 			'accessControl', // perform access control for CRUD operations
-			'postOnly + delete', // we only allow deletion via POST request
+			'projectContext + create'
+			// 'postOnly + delete', // we only allow deletion via POST request
 		);
 	}
 
@@ -156,6 +168,16 @@ class IssueController extends Controller
 		if($model===null)
 			throw new CHttpException(404,'The requested page does not exist.');
 		return $model;
+	}
+
+	public function filterProjectContext($filterChain) {
+		$project_id = null;
+		if (isset($_GET['pid'])) {
+			$project_id = $_GET['pid'];
+		} elseif (isset($_POST['pid'])) {
+			$project_id = $_POST['pid'];
+		}
+		$filterChain -> run();
 	}
 
 	/**
