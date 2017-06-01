@@ -2,13 +2,13 @@
 /* @var $this IssueController */
 /* @var $dataProvider CActiveDataProvider */
 
-$this->breadcrumbs=array(
+$this -> breadcrumbs = array(
 	'Issues',
 );
 
-$this->menu=array(
-	array('label'=>'Create Issue', 'url'=>array('create')),
-	array('label'=>'Manage Issue', 'url'=>array('admin')),
+$this -> menu = array(
+	array('label' => 'Create Issue', 'url' => array('create', 'pid' => 1)),
+	array('label' => 'Manage Issue', 'url' => array('admin')),
 );
 ?>
 
@@ -16,5 +16,5 @@ $this->menu=array(
 
 <?php $this->widget('zii.widgets.CListView', array(
 	'dataProvider'=>$dataProvider,
-	'itemView'=>'_view',
+	'itemView' => '_view',
 )); ?>
