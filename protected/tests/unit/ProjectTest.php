@@ -1,5 +1,15 @@
 <?php
 	class ProjectTest extends CDbTestCase {
+		public $fixtures = array(
+			'projects' => 'Project',
+		);
+
+		public function testRead() {
+			$retrievedProject = $this -> projects('project1');
+			$this -> assertTrue($retrievedProject instanceof Project);
+			$this -> assertEquals('Test Project 1', $retrievedProject -> name);
+		}
+
 		public function testCRUD() {
 			$newProject = new Project;
 			$newProjectName = 'Test Project 1';
