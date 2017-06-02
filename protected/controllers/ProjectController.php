@@ -51,8 +51,20 @@ class ProjectController extends Controller
 	 */
 	public function actionView($id)
 	{
-		$this->render('view',array(
-			'model'=>$this->loadModel($id),
+		$issueDataProvider = new CActiveDataProvider('Issue', array('criteria' => array(
+			'condition' => 'project_id=:projectId',
+			'params' => array(':projectId' => $id),
+		),
+		'pagination' => array(
+			'pageSize' => 1,
+		),
+		));
+		// Project::model() -> findByPk($id);
+		// var_dump($project -> id);die;
+		// var_dump($issueDataProvider);die;
+		$this -> render('view', array(
+			'model' => $this -> loadModel($id),
+			'issueDataProvider' => $issueDataProvider,
 		));
 	}
 
