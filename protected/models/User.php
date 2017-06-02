@@ -55,9 +55,9 @@ class User extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'issues' => array(self::HAS_MANY, 'Issue', 'owner_id'),
-			'issues1' => array(self::HAS_MANY, 'Issue', 'requester_id'),
-			'tblProjects' => array(self::MANY_MANY, 'Project', '{{project_user_assignment}}(user_id, project_id)'),
+			'owned_issues' => array(self::HAS_MANY, 'Issue', 'owner_id'),
+			'requested_issues' => array(self::HAS_MANY, 'Issue', 'requester_id'),
+			'projects' => array(self::MANY_MANY, 'Project', 'project_user_assignment(user_id, project_id)'),
 		);
 	}
 

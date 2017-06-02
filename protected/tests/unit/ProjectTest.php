@@ -44,5 +44,12 @@
 			$deletedProject = Project::model() -> findByPk($projectId);
 			$this -> assertEquals(NULL, $deletedProject);
 		}
+
+		public function testGetUserOptions() {
+			$project = $this -> projects('project2');
+			$options = $project -> userOptions;
+			$this -> assertTrue(is_array($options));
+			$this -> assertTrue(count($options) > 0);
+		}
 	}
 ?>
