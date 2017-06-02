@@ -33,3 +33,43 @@ Stack trace:
 #5 {main}
 REQUEST_URI=/yii/trackstar/issue/list
 ---
+2017/06/02 16:10:28 [error] [php] Trying to get property of non-object (C:\wamp\www\yii\trackstar\protected\controllers\IssueController.php:78)
+Stack trace:
+#0 C:\wamp\www\yii\framework\web\filters\CFilterChain.php(133): IssueController->runAction()
+#1 C:\wamp\www\yii\trackstar\protected\controllers\IssueController.php(180): CFilterChain->run()
+#2 C:\wamp\www\yii\framework\web\filters\CInlineFilter.php(58): IssueController->filterProjectContext()
+#3 C:\wamp\www\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#4 C:\wamp\www\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#5 C:\wamp\www\yii\framework\web\CController.php(1145): CAccessControlFilter->filter()
+#6 C:\wamp\www\yii\framework\web\filters\CInlineFilter.php(58): IssueController->filterAccessControl()
+#7 C:\wamp\www\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#8 C:\wamp\www\yii\framework\web\CController.php(291): CFilterChain->run()
+#9 C:\wamp\www\yii\framework\web\CController.php(265): IssueController->runActionWithFilters()
+#10 C:\wamp\www\yii\framework\web\CWebApplication.php(282): IssueController->run()
+#11 C:\wamp\www\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#12 C:\wamp\www\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#13 C:\wamp\www\yii\trackstar\index.php(13): CWebApplication->run()
+REQUEST_URI=/yii/trackstar/issue/create
+in C:\wamp\www\yii\trackstar\protected\controllers\IssueController.php (78)
+in C:\wamp\www\yii\trackstar\protected\controllers\IssueController.php (180)
+in C:\wamp\www\yii\trackstar\index.php (13)
+2017/06/02 16:10:54 [error] [php] Trying to get property of non-object (C:\wamp\www\yii\trackstar\protected\controllers\IssueController.php:78)
+Stack trace:
+#0 C:\wamp\www\yii\framework\web\filters\CFilterChain.php(133): IssueController->runAction()
+#1 C:\wamp\www\yii\trackstar\protected\controllers\IssueController.php(180): CFilterChain->run()
+#2 C:\wamp\www\yii\framework\web\filters\CInlineFilter.php(58): IssueController->filterProjectContext()
+#3 C:\wamp\www\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#4 C:\wamp\www\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#5 C:\wamp\www\yii\framework\web\CController.php(1145): CAccessControlFilter->filter()
+#6 C:\wamp\www\yii\framework\web\filters\CInlineFilter.php(58): IssueController->filterAccessControl()
+#7 C:\wamp\www\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#8 C:\wamp\www\yii\framework\web\CController.php(291): CFilterChain->run()
+#9 C:\wamp\www\yii\framework\web\CController.php(265): IssueController->runActionWithFilters()
+#10 C:\wamp\www\yii\framework\web\CWebApplication.php(282): IssueController->run()
+#11 C:\wamp\www\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#12 C:\wamp\www\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#13 C:\wamp\www\yii\trackstar\index.php(13): CWebApplication->run()
+REQUEST_URI=/yii/trackstar/issue/create?pid=1
+in C:\wamp\www\yii\trackstar\protected\controllers\IssueController.php (78)
+in C:\wamp\www\yii\trackstar\protected\controllers\IssueController.php (180)
+in C:\wamp\www\yii\trackstar\index.php (13)

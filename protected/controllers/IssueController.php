@@ -180,6 +180,10 @@ class IssueController extends Controller
 		$filterChain -> run();
 	}
 
+	public function getProject() {
+		return $this -> _project;
+	}
+
 	/**
 	 * Performs the AJAX validation.
 	 * @param Issue $model the model to be validated
