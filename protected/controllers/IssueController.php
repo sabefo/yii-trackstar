@@ -177,6 +177,7 @@ class IssueController extends Controller
 		} elseif (isset($_POST['pid'])) {
 			$project_id = $_POST['pid'];
 		}
+		$this -> loadProject($project_id);
 		$filterChain -> run();
 	}
 
