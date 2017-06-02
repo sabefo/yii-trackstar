@@ -156,4 +156,14 @@ class Issue extends CActiveRecord
 			self::STATUS_FINISHED => 'Finished',
 		);
 	}
+
+	public function getStatusText() {
+		$statusOptions = $this -> statusOptions;
+		return isset($statusOptions[$this -> status_id]) ? $statusOptions[$this -> status_id] : "unknown status ({$this -> status_id})";
+	}
+
+	public function getTypeText()	{
+		$typeOptions = $this -> typeOptions;
+		return isset($typeOptions[$this -> type_id]) ? $typeOptions[$this -> type_id] : "unknown type ({$this -> type_id})";
+	}
 }

@@ -59,19 +59,12 @@ class ProjectController extends Controller
 			'pageSize' => 1,
 		),
 		));
-		// Project::model() -> findByPk($id);
-		// var_dump($project -> id);die;
-		// var_dump($issueDataProvider);die;
 		$this -> render('view', array(
 			'model' => $this -> loadModel($id),
 			'issueDataProvider' => $issueDataProvider,
 		));
 	}
 
-	/**
-	 * Creates a new model.
-	 * If creation is successful, the browser will be redirected to the 'view' page.
-	 */
 	public function actionCreate()
 	{
 		$model=new Project;
