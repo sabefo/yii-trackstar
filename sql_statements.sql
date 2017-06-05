@@ -92,3 +92,13 @@ create table AuthAssignment (
 	primary key (itemname,userid),
 	foreign key (itemname) references AuthItem (name) on delete cascade on update cascade
 );
+
+create table tbl_project_user_role (
+	project_id INTEGER NOT NULL,
+	user_id INTEGER NOT NULL,
+	role VARCHAR(64) NOT NULL,
+	primary key (project_id, user_id, role),
+	foreign key (project_id) references tbl_project (id),
+	foreign key (user_id) references tbl_user (id),
+	foreign key (role) references AuthItem (name)
+);
