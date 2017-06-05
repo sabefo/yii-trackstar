@@ -2,6 +2,8 @@
 	class ProjectTest extends CDbTestCase {
 		public $fixtures = array(
 			'projects' => 'Project',
+			'users' => 'User',
+			'projUsrAssign'=>':tbl_project_user_assignment',
 		);
 
 		public function testCreate() {
@@ -43,6 +45,13 @@
 			$this -> assertTrue($retrievedProject -> delete());
 			$deletedProject = Project::model() -> findByPk($projectId);
 			$this -> assertEquals(NULL, $deletedProject);
+		}
+
+		public function testGetUserOptions() {
+			$project = $this -> projects('project2');
+			$options = $project -> userOptions;
+			$this -> assertTrue(is_array($options));
+			$this -> assertTrue(count($options) > 0);
 		}
 	}
 ?>
