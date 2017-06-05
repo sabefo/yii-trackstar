@@ -26,7 +26,7 @@ class IssueController extends Controller
 	{
 		return array(
 			'accessControl', // perform access control for CRUD operations
-			'projectContext + create'
+			'projectContext + create index admin',
 			// 'postOnly + delete', // we only allow deletion via POST request
 		);
 	}
@@ -129,29 +129,30 @@ class IssueController extends Controller
 			$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));
 	}
 
-	/**
-	 * Lists all models.
-	 */
 	public function actionIndex()
 	{
-		$dataProvider=new CActiveDataProvider('Issue');
-		$this->render('index',array(
-			'dataProvider'=>$dataProvider,
+		$dataProvider = new CActiveDataProvider('Issue', array(
+			'criteria' => array(
+				'condition' => 'project_id = :projectId',
+				'params' => array(':projectId' => $this -> _project -> id),
+			)
+		));
+		$this -> render('index', array(
+			'dataProvider' => $dataProvider,
 		));
 	}
 
-	/**
-	 * Manages all models.
-	 */
 	public function actionAdmin()
 	{
-		$model=new Issue('search');
-		$model->unsetAttributes();  // clear any default values
+		$model = new Issue('search');
+		$model -> unsetAttributes();  // clear any default values
 		if(isset($_GET['Issue']))
-			$model->attributes=$_GET['Issue'];
+			$model -> attributes = $_GET['Issue'];
 
-		$this->render('admin',array(
-			'model'=>$model,
+			$model -> project_id = $this -> _project -> id;
+
+		$this -> render('admin', array(
+			'model' => $model,
 		));
 	}
 

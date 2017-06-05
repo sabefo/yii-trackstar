@@ -110,23 +110,25 @@ class Issue extends CActiveRecord
 	{
 		// @todo Please modify the following code to remove attributes that should not be searched.
 
-		$criteria=new CDbCriteria;
+		$criteria = new CDbCriteria;
 
-		$criteria->compare('id',$this->id);
-		$criteria->compare('name',$this->name,true);
-		$criteria->compare('description',$this->description,true);
-		$criteria->compare('project_id',$this->project_id);
-		$criteria->compare('type_id',$this->type_id);
-		$criteria->compare('status_id',$this->status_id);
-		$criteria->compare('owner_id',$this->owner_id);
-		$criteria->compare('requester_id',$this->requester_id);
-		$criteria->compare('create_time',$this->create_time,true);
-		$criteria->compare('create_user_id',$this->create_user_id);
-		$criteria->compare('update_time',$this->update_time,true);
-		$criteria->compare('update_user_id',$this->update_user_id);
+		$criteria -> compare('id', $this -> id);
+		$criteria -> compare('name', $this -> name, true);
+		$criteria -> compare('description', $this -> description, true);
+		$criteria -> compare('project_id', $this -> project_id);
+		$criteria -> compare('type_id', $this -> type_id);
+		$criteria -> compare('status_id', $this -> status_id);
+		$criteria -> compare('owner_id', $this -> owner_id);
+		$criteria -> compare('requester_id', $this -> requester_id);
+		$criteria -> compare('create_time', $this -> create_time, true);
+		$criteria -> compare('create_user_id', $this -> create_user_id);
+		$criteria -> compare('update_time', $this -> update_time, true);
+		$criteria -> compare('update_user_id', $this -> update_user_id);
+		$criteria -> condition = 'project_id = :projectId';
+		$criteria -> params array(':projectId' => $this -> project_id);
 
 		return new CActiveDataProvider($this, array(
-			'criteria'=>$criteria,
+			'criteria' => $criteria,
 		));
 	}
 
