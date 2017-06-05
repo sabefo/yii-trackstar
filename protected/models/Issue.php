@@ -22,7 +22,7 @@
  * @property Project $project
  * @property User $requester
  */
-class Issue extends CActiveRecord
+class Issue extends TrackStarActiveRecord
 {
 	/**
 	 * @return string the associated database table name
@@ -125,7 +125,7 @@ class Issue extends CActiveRecord
 		$criteria -> compare('update_time', $this -> update_time, true);
 		$criteria -> compare('update_user_id', $this -> update_user_id);
 		$criteria -> condition = 'project_id = :projectId';
-		$criteria -> params array(':projectId' => $this -> project_id);
+		$criteria -> params = array(':projectId' => $this -> project_id);
 
 		return new CActiveDataProvider($this, array(
 			'criteria' => $criteria,
