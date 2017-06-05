@@ -12,16 +12,19 @@
 			$newProject -> setAttributes(array(
 				'name' => $newProjectName,
 				'description' => 'This is a test for new project creation',
-				'createTime' => '2009-09-09 00:00:00',
-				'createUser' => '1',
-				'updateTime' => '2009-09-09 00:00:00',
-				'updateUser' => '1',
+				// 'createTime' => '2009-09-09 00:00:00',
+				// 'createUser' => '1',
+				// 'updateTime' => '2009-09-09 00:00:00',
+				// 'updateUser' => '1',
 			));
-			$this -> assertTrue($newProject -> save(false));
+			Yii::app() -> user -> setId($this -> users('user1') -> id);
+			$this -> assertTrue($newProject -> save());
 
 			$retrievedProject = Project::model() -> findByPk($newProject -> id);
+			// echo $retrievedProject -> create_user_id;die;
 			$this -> assertTrue($retrievedProject instanceof Project);
 			$this -> assertEquals($newProjectName, $retrievedProject -> name);
+			$this -> assertEquals(Yii::app() -> user -> id, $retrievedProject -> create_user_id);
 		}
 
 		public function testRead() {

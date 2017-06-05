@@ -22,7 +22,7 @@
  * @property Project $project
  * @property User $requester
  */
-class Issue extends CActiveRecord
+class Issue extends TrackStarActiveRecord
 {
 	/**
 	 * @return string the associated database table name
