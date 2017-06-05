@@ -1274,3 +1274,35 @@ Stack trace:
 REQUEST_URI=/yii/trackstar/issue/1
 HTTP_REFERER=http://localhost/yii/trackstar/issue/
 ---
+2017/06/05 19:20:01 [error] [php] include(CDbExpresion.php): failed to open stream: No such file or directory (C:\wamp\www\yii\framework\YiiBase.php:427)
+Stack trace:
+#0 C:\wamp\www\yii\trackstar\protected\models\LoginForm.php(71): spl_autoload_call()
+#1 C:\wamp\www\yii\trackstar\protected\controllers\SiteController.php(94): LoginForm->login()
+#2 C:\wamp\www\yii\framework\web\actions\CInlineAction.php(49): SiteController->actionLogin()
+#3 C:\wamp\www\yii\framework\web\CController.php(308): CInlineAction->runWithParams()
+#4 C:\wamp\www\yii\framework\web\CController.php(286): SiteController->runAction()
+#5 C:\wamp\www\yii\framework\web\CController.php(265): SiteController->runActionWithFilters()
+#6 C:\wamp\www\yii\framework\web\CWebApplication.php(282): SiteController->run()
+#7 C:\wamp\www\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#8 C:\wamp\www\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#9 C:\wamp\www\yii\trackstar\index.php(13): CWebApplication->run()
+REQUEST_URI=/yii/trackstar/site/login
+in C:\wamp\www\yii\trackstar\protected\models\LoginForm.php (71)
+in C:\wamp\www\yii\trackstar\protected\controllers\SiteController.php (94)
+in C:\wamp\www\yii\trackstar\index.php (13)
+2017/06/05 19:26:04 [error] [php] include(CDbExpresion.php): failed to open stream: No such file or directory (C:\wamp\www\yii\framework\YiiBase.php:427)
+Stack trace:
+#0 C:\wamp\www\yii\trackstar\protected\models\LoginForm.php(71): spl_autoload_call()
+#1 C:\wamp\www\yii\trackstar\protected\controllers\SiteController.php(94): LoginForm->login()
+#2 C:\wamp\www\yii\framework\web\actions\CInlineAction.php(49): SiteController->actionLogin()
+#3 C:\wamp\www\yii\framework\web\CController.php(308): CInlineAction->runWithParams()
+#4 C:\wamp\www\yii\framework\web\CController.php(286): SiteController->runAction()
+#5 C:\wamp\www\yii\framework\web\CController.php(265): SiteController->runActionWithFilters()
+#6 C:\wamp\www\yii\framework\web\CWebApplication.php(282): SiteController->run()
+#7 C:\wamp\www\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#8 C:\wamp\www\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#9 C:\wamp\www\yii\trackstar\index.php(13): CWebApplication->run()
+REQUEST_URI=/yii/trackstar/site/login
+in C:\wamp\www\yii\trackstar\protected\models\LoginForm.php (71)
+in C:\wamp\www\yii\trackstar\protected\controllers\SiteController.php (94)
+in C:\wamp\www\yii\trackstar\index.php (13)
