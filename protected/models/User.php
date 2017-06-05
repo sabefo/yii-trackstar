@@ -123,4 +123,13 @@ class User extends TrackStarActiveRecord
 	{
 		return parent::model($className);
 	}
+
+	protected function afterValidate() {
+		parent::afterValidate();
+		$this -> password = $this -> encrypt($this -> password);
+	}
+
+	public function encrypt($value) {
+		return md5($value);
+	}
 }
