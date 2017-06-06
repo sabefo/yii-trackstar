@@ -1306,3 +1306,31 @@ REQUEST_URI=/yii/trackstar/site/login
 in C:\wamp\www\yii\trackstar\protected\models\LoginForm.php (71)
 in C:\wamp\www\yii\trackstar\protected\controllers\SiteController.php (94)
 in C:\wamp\www\yii\trackstar\index.php (13)
+2017/06/06 16:14:48 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "2".' in C:\wamp\www\yii\framework\web\CController.php:483
+Stack trace:
+#0 C:\wamp\www\yii\framework\web\CController.php(270): CController->missingAction('2')
+#1 C:\wamp\www\yii\framework\web\CWebApplication.php(282): CController->run('2')
+#2 C:\wamp\www\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('project/2/addus...')
+#3 C:\wamp\www\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\wamp\www\yii\trackstar\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/yii/trackstar/project/2/adduser
+---
+2017/06/06 16:21:41 [error] [php] Missing argument 1 for ProjectController::loadModel(), called in C:\wamp\www\yii\trackstar\protected\controllers\ProjectController.php on line 154 and defined (C:\wamp\www\yii\trackstar\protected\controllers\ProjectController.php:186)
+Stack trace:
+#0 C:\wamp\www\yii\framework\web\CController.php(308): CInlineAction->runWithParams()
+#1 C:\wamp\www\yii\framework\web\filters\CFilterChain.php(133): ProjectController->runAction()
+#2 C:\wamp\www\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#3 C:\wamp\www\yii\framework\web\CController.php(1145): CAccessControlFilter->filter()
+#4 C:\wamp\www\yii\framework\web\filters\CInlineFilter.php(58): ProjectController->filterAccessControl()
+#5 C:\wamp\www\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#6 C:\wamp\www\yii\framework\web\CController.php(291): CFilterChain->run()
+#7 C:\wamp\www\yii\framework\web\CController.php(265): ProjectController->runActionWithFilters()
+#8 C:\wamp\www\yii\framework\web\CWebApplication.php(282): ProjectController->run()
+#9 C:\wamp\www\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#10 C:\wamp\www\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#11 C:\wamp\www\yii\trackstar\index.php(13): CWebApplication->run()
+REQUEST_URI=/yii/trackstar/project/adduser/2
+in C:\wamp\www\yii\trackstar\protected\controllers\ProjectController.php (186)
+in C:\wamp\www\yii\trackstar\protected\controllers\ProjectController.php (154)
+in C:\wamp\www\yii\trackstar\index.php (13)

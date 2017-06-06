@@ -63,6 +63,7 @@ INSERT INTO tbl_user (email, username, password)
 VALUES
 ('test1@notanaddress.com','Test_User_One', MD5('test1')),
 ('test2@notanaddress.com','Test_User_Two', MD5('test2'));
+('test3@notanaddress.com','Test_User_Three', MD5('test3'));
 INSERT INTO tbl_project_user_assignment (project_id, user_id, create_time, create_user_id, update_time, update_user_id)
 VALUES (2, 1, '2010-01-01 00:00:00', 1, '2010-01-01 00:00:00', 1);
 (2, 2, '2010-01-01 00:00:00', 1, '2010-01-01 00:00:00', 1);

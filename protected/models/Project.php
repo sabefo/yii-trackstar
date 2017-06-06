@@ -136,6 +136,39 @@ class Project extends TrackStarActiveRecord
 		$command -> bindValue(":role", $role, PDO::PARAM_STR);
 		return $command -> execute() == 1 ? true : false;
 	}
+
+	/**
+	* Returns an array of available roles in which a user can be placed when being added to a project
+	*/
+	public static function getUserRoleOptions()
+	{
+		return CHtml::listData(Yii::app() -> authManager -> getRoles(), 'name', 'name');
+	}
+
+	/**
+	* Makes an association between a user and a the project
+	*/
+	public function associateUserToProject($user)
+	{
+		$sql = "INSERT INTO tbl_project_user_assignment(project_id, user_id) VALUES (:projectId, :userId)";
+		$command = Yii::app() -> db -> createCommand($sql);
+		$command -> bindValue(":projectId", $this -> id, PDO::PARAM_INT);
+		$command -> bindValue(":userId", $user -> id, PDO::PARAM_INT);
+		return $command -> execute();
+	}
+
+	/*
+	* Determines whether or not a user is already part of a project
+	*/
+	public function isUserInProject($user)
+	{
+		$sql = "SELECT user_id FROM tbl_project_user_assignment WHERE project_id = :projectId AND user_id = :userId";
+		$command = Yii::app() -> db -> createCommand($sql);
+		$command -> bindValue(":projectId", $this -> id, PDO::PARAM_INT);
+		$command -> bindValue(":userId", $user -> id, PDO::PARAM_INT);
+		return $command -> execute() == 1 ? true : false;
+	}
+
     /**
      * Returns the static model of the specified AR class.
      * Please note that you should have this exact method in all your CActiveRecord descendants!

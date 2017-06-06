@@ -28,19 +28,19 @@ class ProjectController extends Controller
 	{
 		return array(
 			array('allow',  // allow all users to perform 'index' and 'view' actions
-				'actions'=>array('index','view'),
-				'users'=>array('@'),
+				'actions' => array('index','view', 'adduser'),
+				'users' => array('@'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('create','update'),
-				'users'=>array('@'),
+				'actions' => array('create','update'),
+				'users' => array('@'),
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
-				'actions'=>array('admin','delete'),
-				'users'=>array('admin'),
+				'actions' => array('admin','delete'),
+				'users' => array('admin'),
 			),
 			array('deny',  // deny all users
-				'users'=>array('*'),
+				'users' => array('*'),
 			),
 		);
 	}
@@ -148,6 +148,39 @@ class ProjectController extends Controller
 		));
 	}
 
+	public function actionAdduser($id)
+	{
+		$project = $this -> loadModel($id);
+		if (!Yii::app() -> user -> checkAccess('createUser', array('project' => $project)))
+		{
+			throw new CHttpException(403,'You are not authorized to perform this action.');
+		}
+		$form = new ProjectUserForm;
+
+		// collect user input data
+		if (isset($_POST['ProjectUserForm']))
+		{
+			$form -> attributes = $_POST['ProjectUserForm'];
+			$form -> project = $project;
+			// validate user input and set a sucessfull flassh message if valid
+			if ($form -> validate())
+			{
+				Yii::app() -> user -> setFlash('success', $form -> username .
+				" has been added to the project." );
+				$form = new ProjectUserForm;
+			}
+		}
+		// display the add user form
+		$users = User::model() -> findAll();
+		$usernames = array();
+		foreach ($users as $user)
+		{
+			$usernames[] = $user -> username;
+		}
+		$form -> project = $project;
+		$this -> render('adduser', array('model' => $form, 'usernames' => $usernames));
+	}
+
 	/**
 	 * Returns the data model based on the primary key given in the GET variable.
 	 * If the data model is not found, an HTTP exception will be raised.
@@ -157,9 +190,9 @@ class ProjectController extends Controller
 	 */
 	public function loadModel($id)
 	{
-		$model=Project::model()->findByPk($id);
-		if($model===null)
-			throw new CHttpException(404,'The requested page does not exist.');
+		$model = Project::model() -> findByPk($id);
+		if ($model === null)
+			throw new CHttpException(404, 'The requested page does not exist.');
 		return $model;
 	}
 
@@ -169,10 +202,10 @@ class ProjectController extends Controller
 	 */
 	protected function performAjaxValidation($model)
 	{
-		if(isset($_POST['ajax']) && $_POST['ajax']==='project-form')
+		if(isset($_POST['ajax']) && $_POST['ajax'] === 'project-form')
 		{
 			echo CActiveForm::validate($model);
-			Yii::app()->end();
+			Yii::app() -> end();
 		}
 	}
 }
