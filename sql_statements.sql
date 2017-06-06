@@ -103,3 +103,18 @@ create table tbl_project_user_role (
 	foreign key (user_id) references tbl_user (id),
 	foreign key (role) references AuthItem (name)
 );
+
+CREATE TABLE tbl_comment (
+	id INTEGER NOT NULL PRIMARY KEY AUTO_INCREMENT,
+	content TEXT NOT NULL,
+	issue_id INTEGER,
+	create_time DATETIME,
+	create_user_id INTEGER,
+	update_time DATETIME,
+	update_user_id INTEGER
+);
+
+ALTER TABLE tbl_comment ADD CONSTRAINT FK_comment_issue FOREIGN
+KEY (issue_id) REFERENCES tbl_issue (id);
+ALTER TABLE tbl_comment ADD CONSTRAINT FK_comment_author FOREIGN
+KEY (create_user_id) REFERENCES tbl_user (id);

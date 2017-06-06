@@ -6,7 +6,7 @@ class IssueTest extends CDbTestCase
     'issues' => 'Issue',
     );
 
-    public function testGetTypes() 
+    public function testGetTypes()
     {
         $options = Issue::model() -> typeOptions;
         $this -> assertTrue(is_array($options));
@@ -16,7 +16,7 @@ class IssueTest extends CDbTestCase
         $this -> assertTrue(in_array('Task', $options));
     }
 
-    public function testGetStatuses() 
+    public function testGetStatuses()
     {
         $options = Issue::model() -> statusOptions;
         $this -> assertTrue(is_array($options));
@@ -26,14 +26,21 @@ class IssueTest extends CDbTestCase
         $this -> assertTrue(in_array('Finished', $options));
     }
 
-    public function testGetStatusText() 
+    public function testGetStatusText()
     {
         $this -> assertTrue($this -> issues('issueBug') -> getStatusText() == 'Started');
     }
 
-    public function testGetTypeText() 
+    public function testGetTypeText()
     {
         $this -> assertTrue($this -> issues('issueBug') -> getTypeText() == 'Bug');
     }
+
+	public function testAddComment()
+	{
+		$comment = new Comment;
+		$comment -> content = 'This is a test comment';
+		$this -> assertTrue($this -> issues('issueBug') -> addComment($comment));
+	}
 }
 ?>
