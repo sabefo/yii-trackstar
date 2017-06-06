@@ -166,8 +166,17 @@ class Issue extends TrackStarActiveRecord
 		return isset($statusOptions[$this -> status_id]) ? $statusOptions[$this -> status_id] : "unknown status ({$this -> status_id})";
 	}
 
-	public function getTypeText()	{
+	public function getTypeText() {
 		$typeOptions = $this -> typeOptions;
 		return isset($typeOptions[$this -> type_id]) ? $typeOptions[$this -> type_id] : "unknown type ({$this -> type_id})";
+	}
+
+	/**
+	* Adds a comment to this issue
+	*/
+	public function addComment($comment)
+	{
+		$comment -> issue_id = $this -> id;
+		return $comment->save();
 	}
 }
