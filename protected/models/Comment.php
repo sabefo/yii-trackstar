@@ -103,6 +103,18 @@ class Comment extends TrackStarActiveRecord
 		));
 	}
 
+	public static function findRecentComments($limit = 10, $projectId = null)
+	{
+		if ($projectId != null)
+		{
+			return self::model() -> with(array('issue' => array('condition' => 'project_id=' . $projectId))) -> findAll(array('order' => 't.create_time DESC', 'limit' => $limit,
+			));
+		} else {
+			//get all comments across all projects
+			return self::model() -> with('issue') -> findAll(array('order' => 't.create_time DESC', 'limit' => $limit,));
+		}
+	}
+
 	/**
 	 * Returns the static model of the specified AR class.
 	 * Please note that you should have this exact method in all your CActiveRecord descendants!

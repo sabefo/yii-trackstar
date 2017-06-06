@@ -63,7 +63,7 @@ class IssueController extends Controller
 	 */
 	public function actionView($id)
 	{
-		$issue = $this -> loadModel($id);
+		$issue = $this -> loadModel($id, true);
 		$comment = $this -> createComment($issue);
 		$this -> render('view', array(
 			'model' => $issue,
@@ -181,12 +181,30 @@ class IssueController extends Controller
 	 * @return Issue the loaded model
 	 * @throws CHttpException
 	 */
-	public function loadModel($id)
+	// public function loadModel($id)
+	// {
+	// 	$model = Issue::model() -> findByPk($id);
+	// 	if($model === null)
+	// 		throw new CHttpException(404, 'The requested page does not exist.');
+	// 	return $model;
+	// }
+
+	public function loadModel($id, $withComments = false)
 	{
-		$model=Issue::model()->findByPk($id);
-		if($model===null)
-			throw new CHttpException(404,'The requested page does not exist.');
-		return $model;
+		if ($this -> _model === null)
+		{
+			if ($withComments)
+			{
+				$this -> _model = Issue::model() -> with(array('comments' => array('with' => 'author'))) -> findbyPk($id);
+			} else {
+				$this -> _model = Issue::model() -> findbyPk($id);
+			}
+			if ($this -> _model === null)
+			{
+				throw new CHttpException(404, 'The requested page does not exist.');
+			}
+		}
+		return $this -> _model;
 	}
 
 	public function filterProjectContext($filterChain) {
