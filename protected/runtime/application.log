@@ -1442,3 +1442,23 @@ Stack trace:
 REQUEST_URI=/yii/trackstar/project
 HTTP_REFERER=http://localhost/yii/trackstar/site/login
 ---
+2017/06/07 20:05:23 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'You are not authorized to perform this action.' in C:\wamp\www\yii\trackstar\protected\modules\admin\AdminModule.php:25
+Stack trace:
+#0 C:\wamp\www\yii\framework\web\CController.php(263): AdminModule->beforeControllerAction(Object(DefaultController), Object(CInlineAction))
+#1 C:\wamp\www\yii\framework\web\CWebApplication.php(282): CController->run('index')
+#2 C:\wamp\www\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('admin/default/i...')
+#3 C:\wamp\www\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\wamp\www\yii\trackstar\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/yii/trackstar/admin/default/index
+---
+2017/06/07 20:08:28 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'You are not authorized to perform this action.' in C:\wamp\www\yii\trackstar\protected\modules\admin\AdminModule.php:25
+Stack trace:
+#0 C:\wamp\www\yii\framework\web\CController.php(263): AdminModule->beforeControllerAction(Object(DefaultController), Object(CInlineAction))
+#1 C:\wamp\www\yii\framework\web\CWebApplication.php(282): CController->run('index')
+#2 C:\wamp\www\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('admin/default/i...')
+#3 C:\wamp\www\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\wamp\www\yii\trackstar\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/yii/trackstar/admin/default/index
+---
