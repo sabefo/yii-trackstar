@@ -118,3 +118,12 @@ ALTER TABLE tbl_comment ADD CONSTRAINT FK_comment_issue FOREIGN
 KEY (issue_id) REFERENCES tbl_issue (id);
 ALTER TABLE tbl_comment ADD CONSTRAINT FK_comment_author FOREIGN
 KEY (create_user_id) REFERENCES tbl_user (id);
+
+CREATE TABLE tbl_sys_message (
+	id INTEGER NOT NULL PRIMARY KEY AUTO_INCREMENT,
+	message TEXT NOT NULL,
+	create_time DATETIME,
+	create_user_id INTEGER,
+	update_time DATETIME,
+	update_user_id INTEGER
+);
