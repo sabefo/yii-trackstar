@@ -81,6 +81,7 @@ class SiteController extends Controller
 	 */
 	public function actionLogin()
 	{
+		// Yii::app() -> language = 'rev';
 		if (!Yii::app() -> user -> isGuest)
 		{
 			$this -> redirect(Yii::app() -> homeUrl);
