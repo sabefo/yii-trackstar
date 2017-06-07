@@ -87,6 +87,16 @@ body
 	text-decoration:none;
 }
 
+div.sys-message
+{
+	padding:.8em;
+	margin-bottom:1em;
+	border:3px solid #ddd;
+	background:#9EEFFF;
+	color:#FF330A;
+	border-color:#00849E;
+}
+
 div.flash-error, div.flash-notice, div.flash-success
 {
 	padding:.8em;

@@ -127,9 +127,18 @@ class ProjectController extends Controller
 	 */
 	public function actionIndex()
 	{
-		$dataProvider=new CActiveDataProvider('Project');
-		$this->render('index',array(
-			'dataProvider'=>$dataProvider,
+
+		//get the latest system message to display based on the update_time column
+		$sysMessage = SysMessage::model() -> find(array('order' => 't.update_time DESC',));
+		if ($sysMessage != null)
+			$message = $sysMessage -> message;
+		else
+			$message = null;
+
+		$dataProvider = new CActiveDataProvider('Project');
+		$this -> render('index', array(
+			'dataProvider' => $dataProvider,
+			'sysMessage' => $message,
 		));
 	}
 
