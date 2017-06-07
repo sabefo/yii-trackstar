@@ -8,10 +8,12 @@ class AdminModule extends CWebModule
 		// you may place code here to customize the module or the application
 
 		// import the module-level models and components
-		$this->setImport(array(
+		$this -> setImport(array(
 			'admin.models.*',
 			'admin.components.*',
 		));
+
+		$this -> layout = 'main';
 	}
 
 	public function beforeControllerAction($controller, $action)
