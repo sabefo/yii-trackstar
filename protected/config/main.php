@@ -8,7 +8,7 @@
 return array(
 	'basePath' => dirname(__FILE__).DIRECTORY_SEPARATOR.'..',
 	'name' => 'TrackStar',
-	'homeUrl' => '/trakstar/project',
+	'homeUrl' => '/yii/trackstar/project',
 	'theme' => 'new',
 
 	// preloading 'log' component

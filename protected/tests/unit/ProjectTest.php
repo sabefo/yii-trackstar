@@ -3,10 +3,10 @@ class ProjectTest extends CDbTestCase
 {
 
     public $fixtures = array(
-	    'projects' => 'Project',
-	    'users' => 'User',
-	    'projUsrAssign' => ':tbl_project_user_assignment',
-	    'projUserRole' => ':tbl_project_user_role',
+		'projects' => 'Project',
+		'users' => 'User',
+		'projUsrAssign' => ':tbl_project_user_assignment',
+		'projUserRole' => ':tbl_project_user_role',
 		'authAssign' => ':AuthAssignment',
     );
 
@@ -16,8 +16,8 @@ class ProjectTest extends CDbTestCase
         $newProjectName = 'Test Project Creation';
         $newProject -> setAttributes(
             array(
-            'name' => $newProjectName,
-            'description' => 'This is a test for new project creation',
+	            'name' => $newProjectName,
+	            'description' => 'This is a test for new project creation',
             )
         );
         Yii::app() -> user -> setId($this -> users('user1') -> id);
@@ -93,8 +93,8 @@ class ProjectTest extends CDbTestCase
 		$this -> assertTrue(Yii::app() -> user -> checkAccess('readIssue', $params));
 		$this -> assertFalse(Yii::app() -> user -> checkAccess('updateProject', $params));
 		//now ensure the user does not have any access to a project they are not associated with
-		$project = Project::model()->findByPk(1);
-		$params = array('project'=>$project);
+		$project = Project::model() -> findByPk(1);
+		$params = array('project' => $project);
 		$this -> assertFalse(Yii::app() -> user -> checkAccess('updateIssue', $params));
 		$this -> assertFalse(Yii::app() -> user -> checkAccess('readIssue', $params));
 		$this -> assertFalse(Yii::app() -> user -> checkAccess('updateProject', $params));

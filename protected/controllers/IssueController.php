@@ -191,20 +191,17 @@ class IssueController extends Controller
 
 	public function loadModel($id, $withComments = false)
 	{
-		if ($this -> _model === null)
+		if ($withComments)
 		{
-			if ($withComments)
-			{
-				$this -> _model = Issue::model() -> with(array('comments' => array('with' => 'author'))) -> findbyPk($id);
-			} else {
-				$this -> _model = Issue::model() -> findbyPk($id);
-			}
-			if ($this -> _model === null)
-			{
-				throw new CHttpException(404, 'The requested page does not exist.');
-			}
+			$model = Issue::model() -> with(array('comments' => array('with' => 'author'))) -> findbyPk($id);
+		} else {
+			$model = Issue::model() -> findbyPk($id);
 		}
-		return $this -> _model;
+		if ($model === null)
+		{
+			throw new CHttpException(404, 'The requested page does not exist.');
+		}
+		return $model;
 	}
 
 	public function filterProjectContext($filterChain) {

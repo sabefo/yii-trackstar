@@ -2,8 +2,8 @@
 class IssueTest extends CDbTestCase
 {
     public $fixtures = array(
-    'projects' => 'Project',
-    'issues' => 'Issue',
+	    'projects' => 'Project',
+	    'issues' => 'Issue',
     );
 
     public function testGetTypes()
